@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <div className="background">
-      <h1>안녕 얘드랑</h1>
+      <h1>콩나물 밭에 오신걸 환영합니다</h1>
       <button className="login-button" onClick={handleLogin}>
         Login
       </button>
