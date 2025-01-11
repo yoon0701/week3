@@ -5,7 +5,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5); /* 투명한 어두운 배경 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,25 +15,89 @@
   /* 팝업 컨텐츠 */
   .popup-content {
     background: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
-    width: 300px;
+    width: 400px; /* 팝업 크기 확장 */
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* 닫기 버튼 배치 조정을 위한 position 설정 */
   }
   
   /* 닫기 버튼 */
   .close-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #ffcc00;
-    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
     border: none;
-    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
     cursor: pointer;
   }
   
   .close-button:hover {
-    background-color: #ffc107;
+    color: #ff5555; /* 호버 시 빨간색으로 변경 */
+  }
+  
+  /* 팝업 제목 */
+  .popup-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* 파일 업로드 입력 */
+  .popup-content input[type="file"] {
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  /* 선택된 파일 이름 표시 */
+  .popup-content p {
+    margin: 10px 0;
+    color: #555;
+    font-size: 16px;
+  }
+  
+  /* 업로드 및 닫기 버튼 컨테이너 */
+  .popup-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between; /* 버튼 간격 유지 */
+  }
+  
+  /* 업로드 버튼 */
+  .upload-button {
+    padding: 10px 20px;
+    background-color: #4caf50; /* 초록색 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .upload-button:hover {
+    background-color: #45a049;
+  }
+  
+  /* 닫기 버튼 */
+  .cancel-button {
+    padding: 10px 20px;
+    background-color: #f44336; /* 빨간색 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .cancel-button:hover {
+    background-color: #e53935;
   }
   
