@@ -1,10 +1,35 @@
 /* App.css */
-.App {
-  width: 100vw;
-  height: 100vh;
+body {
   margin: 0;
+  padding: 0;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background: radial-gradient(circle, #ffe149 22%, #ede3b0 56.6%, #ffffff 83.9%);
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.background {
+  text-align: center;
+}
+
+.login-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #333;
+  background-color: #ffe4b5;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #ffd700;
+  color: #000;
+  transform: translateY(-2px);
 }

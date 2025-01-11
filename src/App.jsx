@@ -1,13 +1,34 @@
-// App.jsx
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import Page1 from "./pages/Page1";
+import "./App.css";
 
-function App() {
+const Home = () => {
+  const navigate = useNavigate(); // 페이지 이동을 위한 훅 사용
+
+  const handleLogin = () => {
+    navigate("/page1"); // Login 버튼 클릭 시 Page1으로 이동
+  };
+
   return (
-    <div className="App">
-      {/* 여기에 추가적인 콘텐츠를 넣을 수 있습니다 */}
+    <div className="background">
       <h1>안녕 얘드랑</h1>
+      <button className="login-button" onClick={handleLogin}>
+        Login
+      </button>
     </div>
   );
-}
+};
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/page1" element={<Page1 />} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
