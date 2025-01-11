@@ -23,6 +23,11 @@ const Page1 = () => {
     handleClosePopup(); // 팝업 닫기
   };
 
+  // 이미지 삭제 핸들러
+  const handleDeleteImage = (imageUrl) => {
+    setUploadedImages((prev) => prev.filter((image) => image !== imageUrl)); // 선택된 이미지 제거
+  };
+
   return (
     <div className="page1-container">
       {/* 좌측 텍스트 */}
@@ -41,7 +46,15 @@ const Page1 = () => {
         <div className="sheet-list">
           {/* 업로드된 이미지 렌더링 */}
           {uploadedImages.map((image, index) => (
-            <img key={index} src={image} alt={`악보 ${index + 1}`} className="sheet-image" />
+            <div key={index} className="sheet-item">
+              <img src={image} alt={`악보 ${index + 1}`} className="sheet-image" />
+              <button
+                className="delete-button"
+                onClick={() => handleDeleteImage(image)}
+              >
+                X
+              </button>
+            </div>
           ))}
         </div>
       </div>
