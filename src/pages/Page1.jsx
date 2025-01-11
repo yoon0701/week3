@@ -41,7 +41,10 @@ const Page1 = () => {
 
       {/* 메인 컨텐츠 */}
       <div className="main-content">
-        <p>악보를 추가하려면 하단 버튼을 클릭하세요.</p>
+        {/* 이미지가 없을 때만 중앙 문구 표시 */}
+        {uploadedImages.length === 0 && (
+          <p className="placeholder-text">악보를 추가하려면 하단 버튼을 클릭하세요.</p>
+        )}
 
         <div className="sheet-list">
           {/* 업로드된 이미지 렌더링 */}
