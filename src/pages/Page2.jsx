@@ -1,34 +1,20 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./Page2.css";
 
 const Page2 = () => {
   const location = useLocation();
-  const navigate = useNavigate();
-  const { imageUrl } = location.state || {}; // 전달받은 이미지 URL
-
-  if (!imageUrl) {
-    return (
-      <div className="page2-container">
-        <h2>이미지가 없습니다.</h2>
-        <button onClick={() => navigate("/")}>돌아가기</button>
-      </div>
-    );
-  }
+  const images = location.state?.images || []; // 전달받은 이미지 리스트
 
   return (
     <div className="page2-container">
-      {/* 좌측 사이드바 */}
       <div className="sidebar">
-        <h2>Sidebar</h2>
+        <h2>선택된 악보들</h2>
       </div>
-
-      {/* 클릭된 이미지 표시 */}
-      <div className="image-container">
-        <img src={imageUrl} alt="확대된 악보" className="full-image" />
-        <button className="back-button" onClick={() => navigate("/")}>
-          돌아가기
-        </button>
+      <div className="image-scroll">
+        {images.map((image, index) => (
+          <img key={index} src={image} alt={`악보 ${index + 1}`} className="scroll-image" />
+        ))}
       </div>
     </div>
   );
