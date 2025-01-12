@@ -17,10 +17,9 @@ const Popup = ({ onClose, onUpload }) => {
   };
 
   return (
-    <div className="popup-container">
+    <div className="popup-overlay">
       <div className="popup-content">
         <h2>사진 업로드</h2>
-        {/* 파일 업로드 입력 */}
         <input
           type="file"
           accept="image/*"
@@ -28,10 +27,13 @@ const Popup = ({ onClose, onUpload }) => {
         />
         {selectedFile && <p>선택된 파일: {selectedFile.name}</p>}
 
-        {/* 버튼 */}
         <div className="popup-buttons">
-          <button onClick={handleUpload}>업로드</button>
-          <button onClick={onClose}>닫기</button>
+          <button className="upload-button" onClick={handleUpload}>
+            업로드
+          </button>
+          <button className="cancel-button" onClick={onClose}>
+            닫기
+          </button>
         </div>
       </div>
     </div>
