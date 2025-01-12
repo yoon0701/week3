@@ -19,23 +19,29 @@ const Page1 = () => {
   };
 
   // 이미지 업로드 핸들러
-  const handleUploadImage = (files) => {
-    const newImages = Array.from(files).map((file) =>
+const handleUploadImage = (files) => {
+  const newImages = Array.from(files).map((file) =>
     URL.createObjectURL(file)
-    ); // 파일 URL로 반환환
-  
-    // Select only the first image from the uploaded files
-    const firstImage = newImages[0];
-    if (firstImage) {
-      setUploadedImages((prev) => [...prev, firstImage]); // Add only the first image to the existing array
-    }
-    handleClosePopup(); // Close the popup
-  };
-  
+  ); // 파일을 URL로 변환
+
+  // 첫 번째 이미지를 대표 이미지로 선택
+  const firstImage = newImages[0];
+  if (firstImage) {
+    setUploadedImages((prev) => [...prev, firstImage]); // 첫 번째 이미지만 추가
+  }
+
+  // 팝업 닫기
+  handleClosePopup();
+};
 
   // 이미지 삭제 핸들러
   const handleDeleteImage = (imageUrl) => {
     setUploadedImages((prev) => prev.filter((image) => image !== imageUrl)); // 선택된 이미지 제거
+  };
+
+  // 이미지 보기 핸들러
+  const handleViewImage = (imageUrl) => { // **추가됨**
+    navigate("/page2", { state: { imageUrl } }); // Page2로 이미지 URL 전달
   };
 
   return (

@@ -1,16 +1,44 @@
 .page2-container {
-  width: 100vw;
-  height: 100vh;
   display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f5f5f5;
+}
+
+.sidebar {
+  width: 25%;
+  height: 100%;
+  background: linear-gradient(to right, #d8b93c, transparent);
+  padding: 20px;
+}
+
+.image-container {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(circle, #ffe149 22%, #ede3b0 56.6%, #ffffff 83.9%);
-  overflow: hidden;
 }
 
 .full-image {
-  max-width: 90%; /* 화면 너비의 90% */
-  max-height: 90%; /* 화면 높이의 90% */
-  border-radius: 10px; /* 모서리 둥글게 */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.back-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #555;
 }
