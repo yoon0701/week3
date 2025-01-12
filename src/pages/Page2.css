@@ -1,0 +1,16 @@
+.page2-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, #ffe149 22%, #ede3b0 56.6%, #ffffff 83.9%);
+  overflow: hidden;
+}
+
+.full-image {
+  max-width: 90%; /* 화면 너비의 90% */
+  max-height: 90%; /* 화면 높이의 90% */
+  border-radius: 10px; /* 모서리 둥글게 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+}

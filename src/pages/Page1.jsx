@@ -17,11 +17,19 @@ const Page1 = () => {
   };
 
   // 이미지 업로드 핸들러
-  const handleUploadImage = (file) => {
-    const imageUrl = URL.createObjectURL(file); // 파일을 URL로 변환
-    setUploadedImages((prev) => [...prev, imageUrl]); // 기존 이미지 배열에 추가
-    handleClosePopup(); // 팝업 닫기
+  const handleUploadImage = (files) => {
+    const newImages = Array.from(files).map((file) =>
+    URL.createObjectURL(file)
+    ); // Process file array to generate URLs for all files
+  
+    // Select only the first image from the uploaded files
+    const firstImage = newImages[0];
+    if (firstImage) {
+      setUploadedImages((prev) => [...prev, firstImage]); // Add only the first image to the existing array
+    }
+    handleClosePopup(); // Close the popup
   };
+  
 
   // 이미지 삭제 핸들러
   const handleDeleteImage = (imageUrl) => {
