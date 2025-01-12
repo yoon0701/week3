@@ -147,36 +147,55 @@ body {
   transform: scale(1.05); /* 이미지 확대 */
 }
 
+/* 버튼 컨테이너 */
+.button-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none; /* 기본적으로 숨기기 */
+  gap: 10px;
+  z-index: 2;
+}
+
+/* 공통 버튼 스타일 */
+.sheet-button {
+  position: absolute;
+  top: 50%; /* 이미지의 수직 중앙 */
+  transform: translateY(-50%); /* Y축 중앙 정렬 */
+  padding: 8px 16px;
+  font-size: 14px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  z-index: 2;
+}
+
+/* 보기 버튼 */
+.view-button {
+  left: 30%; /* 이미지의 왼쪽에 배치 */
+  background-color: rgba(0, 123, 255, 0.8); /* 파란색 */
+}
+
+.view-button:hover {
+  background-color: rgba(0, 123, 255, 1); /* 호버 시 진한 파란색 */
+  transform: scale(1.1); /* 확대 효과 */
+}
+
 /* 삭제 버튼 */
 .delete-button {
-  position: absolute; /* 삭제 버튼을 이미지 위에 배치 */
-  top: 50%; /* 이미지 상단에서 50% 아래 */
-  left: 50%; /* 이미지 왼쪽에서 50% 오른쪽 */
-  transform: translate(-50%, -50%); /* 정확히 이미지 중심으로 이동 */
-  padding: 10px 15px; /* 버튼 크기 조정 */
-  font-size: 16px; /* 버튼 텍스트 크기 */
-  color: white;
-  background-color: rgba(255, 69, 0, 0.8); /* 버튼 색상 */
-  border: none;
-  border-radius: 5px; /* 모서리를 둥글게 */
-  cursor: pointer;
-  display: none; /* 기본적으로 숨김 */
-  z-index: 10; /* 버튼이 이미지 위에 표시되도록 */
-  transition: transform 0.2s ease, background-color 0.2s ease; /* 부드러운 확대 효과 */
-}
-
-.button-icon {
-  width: 24px;
-  height: 24px;
-}
-
-/* 이미지 위에 마우스 올렸을 때 버튼 표시 */
-.sheet-item:hover .delete-button {
-  display: flex; /* 버튼 보이기 */
+  right: 30%; /* 이미지의 오른쪽에 배치 */
+  background-color: rgba(255, 69, 0, 0.8); /* 빨간색 */
 }
 
 .delete-button:hover {
-  transform: translate(-50%, -50%) scale(1.1); /* 버튼을 약간 확대 */
-  transform-origin: center; /* 확대 중심을 버튼의 가운데로 설정 */
-  background-color: rgba(255, 200, 0, 1); /* 색상 변경 */
+  background-color: rgba(255, 69, 0, 1); /* 호버 시 진한 빨간색 */
+  transform: scale(1.1); /* 확대 효과 */
+}
+
+/* 마우스 올릴 때 버튼 컨테이너 표시 */
+.sheet-item:hover .button-container {
+  display: flex; /* 버튼 보이기 */
 }

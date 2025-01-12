@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Popup from "../components/Popup";
 import "./Page1.css";
+import { useNavigate } from "react-router-dom";
 
 const Page1 = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false); // Popup 상태
   const [uploadedImages, setUploadedImages] = useState([]); // 업로드된 이미지 리스트
+  const navigate = useNavigate();
 
   // 팝업 열기
   const handleButtonClick = () => {
@@ -20,7 +22,7 @@ const Page1 = () => {
   const handleUploadImage = (files) => {
     const newImages = Array.from(files).map((file) =>
     URL.createObjectURL(file)
-    ); // Process file array to generate URLs for all files
+    ); // 파일 URL로 반환환
   
     // Select only the first image from the uploaded files
     const firstImage = newImages[0];
@@ -59,12 +61,20 @@ const Page1 = () => {
           {uploadedImages.map((image, index) => (
             <div key={index} className="sheet-item">
               <img src={image} alt={`악보 ${index + 1}`} className="sheet-image" />
-              <button
-                className="delete-button"
-                onClick={() => handleDeleteImage(image)}
-              >
-                X
-              </button>
+              <div className="button-container">
+                <button
+                  className="view-button"
+                  onClick={() => handleViewImage(image)}
+                >
+                  보기
+                </button>
+                <button
+                  className="delete-button"
+                  onClick={() => handleDeleteImage(image)}
+                >
+                  X
+                </button>
+              </div>
             </div>
           ))}
         </div>
