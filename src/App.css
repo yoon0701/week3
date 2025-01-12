@@ -7,18 +7,20 @@ body {
   justify-content: center;
   align-items: center;
   background: radial-gradient(circle, #ffe149 22%, #ede3b0 56.6%, #ffffff 83.9%);
-  font-family: Arial, sans-serif;
+  font-family: 'Regular', sans-serif;
   overflow: hidden;
 }
 
 .background {
   text-align: center;
+  font-family: 'Bold';
 }
 
 .login-button {
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 18px;
+  font-family: 'Regular', serif;
   color: #333;
   background-color: #ffe4b5;
   border: none;
