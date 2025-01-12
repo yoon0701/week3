@@ -120,26 +120,27 @@ body {
 
 /* 이미지 리스트 */
 .sheet-list {
-  display: flex;
-  gap: 20px; /* 이미지 간격 */
-  flex-wrap: wrap; /* 줄바꿈 허용 */
-  justify-content: center; /* 가운데 정렬 */
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4열로 설정 */
+  gap: 20px; /* 각 악보 간의 간격 */
+  padding: 20px;
+  justify-items: center; /* 각 열의 악보를 중앙 정렬 */
 }
 
-/* 이미지 컨테이너 */
+/* 업로드된 이미지 컨테이너 */
 .sheet-item {
-  position: relative; /* 버튼을 이미지 위에 올리기 위해 */
+  width: 200px; /* 악보 이미지의 고정된 너비 */
+  position: relative; /* 삭제 버튼 위치를 이미지 위로 설정하기 위한 기준 */
   display: inline-block;
 }
 
-/* 업로드된 이미지 스타일 */
+/* 업로드된 악보 이미지 스타일 */
 .sheet-image {
-  width: 200px;
+  width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s; /* 확대 효과 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  transition: transform 0.2s ease; /* 호버 시 확대 효과 */
 }
 
 .sheet-image:hover {
@@ -148,21 +149,20 @@ body {
 
 /* 삭제 버튼 */
 .delete-button {
-  position: absolute;
-  top: 50%; /* 이미지 세로 중심 */
-  left: 50%; /* 이미지 가로 중심 */
-  transform: translate(-50%, -50%); /* 중심 위치 조정 */
-  background-color: rgba(255, 223, 0, 0.8); /* 반투명 노란색 */
-  color: white; /* 버튼 텍스트 색상 */
+  position: absolute; /* 삭제 버튼을 이미지 위에 배치 */
+  top: 50%; /* 이미지 상단에서 50% 아래 */
+  left: 50%; /* 이미지 왼쪽에서 50% 오른쪽 */
+  transform: translate(-50%, -50%); /* 정확히 이미지 중심으로 이동 */
+  padding: 10px 15px; /* 버튼 크기 조정 */
+  font-size: 16px; /* 버튼 텍스트 크기 */
+  color: white;
+  background-color: rgba(255, 69, 0, 0.8); /* 버튼 색상 */
   border: none;
-  border-radius: 50%;
-  width: 40px; /* 버튼 크기 */
-  height: 40px;
+  border-radius: 5px; /* 모서리를 둥글게 */
   cursor: pointer;
-  display: none; /* 기본적으로 숨기기 */
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
+  display: none; /* 기본적으로 숨김 */
+  z-index: 10; /* 버튼이 이미지 위에 표시되도록 */
+  transition: transform 0.2s ease, background-color 0.2s ease; /* 부드러운 확대 효과 */
 }
 
 .button-icon {
@@ -176,5 +176,7 @@ body {
 }
 
 .delete-button:hover {
-  background-color: rgba(255, 200, 0, 1); /* 호버 시 색상 변경 */
+  transform: translate(-50%, -50%) scale(1.1); /* 버튼을 약간 확대 */
+  transform-origin: center; /* 확대 중심을 버튼의 가운데로 설정 */
+  background-color: rgba(255, 200, 0, 1); /* 색상 변경 */
 }
