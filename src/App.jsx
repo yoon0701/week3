@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import AppProvider from "./context/AppContext";
 import Page1 from "./pages/Page1";
 import Page2 from "./pages/Page2";
 import "./App.css";
@@ -23,13 +24,15 @@ const Home = () => {
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/page1" element={<Page1 />} />
-        <Route path="/page2" element={<Page2 />} />
-      </Routes>
-    </Router>
+    <AppProvider> {/* Context API로 감싸기 */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} /> {/* 로그인 페이지 */}
+          <Route path="/page1" element={<Page1 />} /> {/* Page1 */}
+          <Route path="/page2" element={<Page2 />} /> {/* Page2 */}
+        </Routes>
+      </Router>
+    </AppProvider>
   );
 };
 
