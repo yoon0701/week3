@@ -1,61 +1,65 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { OpenSheetMusicDisplay } from "opensheetmusicdisplay"; // OSMD 라이브러리 추가
+import { OpenSheetMusicDisplay } from "opensheetmusicdisplay";
 import "./Page3.css";
 
 const Page3 = () => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false); // 팝업 상태
-  const [selectedFile, setSelectedFile] = useState(null); // 선택된 파일
-  const [osmd, setOsmd] = useState(null); // OSMD 인스턴스
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [osmd, setOsmd] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // OSMD 초기화
-    const osmdInstance = new OpenSheetMusicDisplay("music-container");
+    const osmdInstance = new OpenSheetMusicDisplay("music-container", {
+      autoResize: true,
+    });
     setOsmd(osmdInstance);
   }, []);
 
-  // 팝업 열기
   const handleOpenPopup = () => {
     setIsPopupOpen(true);
   };
 
-  // 팝업 닫기
   const handleClosePopup = () => {
     setIsPopupOpen(false);
-    setSelectedFile(null); // 파일 선택 초기화
+    setSelectedFile(null);
   };
 
-  // 파일 선택 핸들러
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]); // 선택된 파일 저장
+    setSelectedFile(event.target.files[0]);
   };
 
-  // 파일 업로드 및 렌더링 핸들러
   const handleFileUpload = () => {
     if (selectedFile) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        const fileContent = e.target.result; // 파일 내용 읽기
+        const fileContent = e.target.result; // 바이너리 문자열로 파일 읽기
         renderMusic(fileContent); // 악보 렌더링
         alert(`파일 ${selectedFile.name}이 업로드되었습니다.`);
-        handleClosePopup(); // 팝업 닫기
+        handleClosePopup();
       };
-      reader.readAsBinaryString(selectedFile); // 파일을 바이너리 문자열로 읽기
+      reader.readAsBinaryString(selectedFile); // 바이너리 문자열로 읽기
     } else {
       alert("파일을 선택해주세요.");
     }
   };
-
-  // OSMD를 사용해 악보 렌더링
+  
   const renderMusic = (fileContent) => {
     if (osmd) {
-      osmd.load(fileContent).then(() => {
-        osmd.render(); // 악보 렌더링
-      });
+      osmd.load(fileContent)
+        .then(() => {
+          osmd.render(); // 악보 렌더링
+          console.log("악보가 성공적으로 렌더링되었습니다.");
+        })
+        .catch((err) => {
+          console.error("악보 렌더링 중 오류 발생:", err);
+          alert("악보 렌더링에 실패했습니다. 유효한 MusicXML 파일인지 확인해주세요.");
+        });
+    } else {
+      console.error("OSMD가 초기화되지 않았습니다.");
     }
   };
-
+  
   return (
     <div className="page3-container">
       {/* 좌측 사이드바 */}
