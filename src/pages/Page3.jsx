@@ -30,36 +30,37 @@ const Page3 = () => {
   };
 
   const handleFileUpload = () => {
-    if (selectedFile) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const fileContent = e.target.result; // 바이너리 문자열로 파일 읽기
-        renderMusic(fileContent); // 악보 렌더링
-        alert(`파일 ${selectedFile.name}이 업로드되었습니다.`);
-        handleClosePopup();
-      };
-      reader.readAsBinaryString(selectedFile); // 바이너리 문자열로 읽기
-    } else {
-      alert("파일을 선택해주세요.");
-    }
-  };
-  
-  const renderMusic = (fileContent) => {
-    if (osmd) {
-      osmd.load(fileContent)
-        .then(() => {
-          osmd.render(); // 악보 렌더링
-          console.log("악보가 성공적으로 렌더링되었습니다.");
-        })
-        .catch((err) => {
-          console.error("악보 렌더링 중 오류 발생:", err);
-          alert("악보 렌더링에 실패했습니다. 유효한 MusicXML 파일인지 확인해주세요.");
-        });
-    } else {
-      console.error("OSMD가 초기화되지 않았습니다.");
-    }
-  };
-  
+  if (selectedFile) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const fileContent = e.target.result; // 바이너리 문자열로 파일 읽기
+      renderMusic(fileContent); // 악보 렌더링
+      alert(`파일 ${selectedFile.name}이 업로드되었습니다.`);
+      handleClosePopup();
+    };
+    reader.readAsBinaryString(selectedFile); // 바이너리 문자열로 읽기
+  } else {
+    alert("파일을 선택해주세요.");
+  }
+};
+
+const renderMusic = (fileContent) => {
+  if (osmd) {
+    osmd.load(fileContent)
+      .then(() => {
+        osmd.render(); // 악보 렌더링
+        console.log("악보가 성공적으로 렌더링되었습니다.");
+      })
+      .catch((err) => {
+        console.error("악보 렌더링 중 오류 발생:", err);
+        alert("악보 렌더링에 실패했습니다. 유효한 MusicXML 파일인지 확인해주세요.");
+      });
+  } else {
+    console.error("OSMD가 초기화되지 않았습니다.");
+  }
+};
+
+
   return (
     <div className="page3-container">
       {/* 좌측 사이드바 */}
