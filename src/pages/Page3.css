@@ -1,0 +1,102 @@
+/* 전체 레이아웃 */
+.page3-container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, #ffe149 22%, #ede3b0 56.6%, #ffffff 83.9%);
+    overflow: hidden;
+  }
+  
+  /* 좌측 사이드바 */
+  .sidebar {
+    width: 25%;
+    height: 100%;
+    background: linear-gradient(to right, #d8b93c, transparent);
+    padding: 20px;
+  }
+  
+  .sidebar h2 {
+    font-size: 24px;
+    color: #000;
+  }
+  
+  .sidebar ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    font-size: 18px;
+    margin: 10px 0;
+    cursor: pointer;
+  }
+  
+  /* 메인 영역 */
+  .main-content {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 20px;
+  }
+  
+  /* 팝업 버튼 */
+  .popup-button {
+    width: 60px;
+    height: 60px;
+    background-color: #ffd700;
+    border: none;
+    border-radius: 50%;
+    font-size: 36px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* 팝업 오버레이 */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* 팝업 콘텐츠 */
+  .popup-content {
+    width: 400px;
+    height: 200px;
+    background-color: #ffd700;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  /* 팝업 닫기 버튼 */
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: #ff3333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  

@@ -37,6 +37,9 @@ const Page2 = () => {
             넘순이
           </li>
           <li style={{ cursor: "pointer" }}>넘김이</li>
+          <li onClick={() => navigate("/page3")} style={{ cursor: "pointer" }}>
+            악복이
+          </li>
         </ol>
       </div>
 

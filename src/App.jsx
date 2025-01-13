@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-route
 import AppProvider from "./context/AppContext";
 import Page1 from "./pages/Page1";
 import Page2 from "./pages/Page2";
+import Page3 from "./pages/Page3";
 import "./App.css";
 
 const Home = () => {
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/" element={<Home />} /> {/* 로그인 페이지 */}
           <Route path="/page1" element={<Page1 />} /> {/* Page1 */}
           <Route path="/page2" element={<Page2 />} /> {/* Page2 */}
+          <Route path="/page3" element={<Page3 />} /> {/* Page3 */}
         </Routes>
       </Router>
     </AppProvider>
