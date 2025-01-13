@@ -1,17 +1,19 @@
-/* 전체 컨테이너 */
+/* 전체 레이아웃 */
 .page2-container {
   display: flex;
-  height: 100vh;
+  flex-direction: row;
   width: 100vw;
-  background: #f9f9f9;
+  height: 100vh;
+  background: radial-gradient(circle, #ffe149 22%, #ede3b0 56.6%, #ffffff 83.9%);
   overflow: hidden;
 }
 
 /* 좌측 사이드바 */
 .sidebar {
-  width: 20%;
-  padding: 20px;
+  width: 25%;
+  height: 100%;
   background: linear-gradient(to right, #d8b93c, transparent);
+  padding: 20px;
 }
 
 .sidebar h2 {
@@ -19,29 +21,69 @@
   color: #000;
 }
 
-/* 가로 스크롤 영역 */
-.image-scroll {
+/* 이미지 표시 영역 */
+.image-display {
+  width: 75%;
+  height: 100%;
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  gap: 20px;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
-  width: 80%;
+  overflow: hidden;
+  position: relative;
 }
 
-.image-scroll::-webkit-scrollbar {
-  height: 8px;
+/* 이미지 래퍼 */
+.image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.image-scroll::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 4px;
-}
-
-.scroll-image {
-  width: 300px;
+/* 현재 이미지 */
+.center-image {
+  width: 70%; /* 고정된 이미지 규격 */
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 80%; /* 화면 높이 제한 */
+  object-fit: contain;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+/* 이전 및 다음 이미지 */
+.adjacent-image {
+  width: 50%;
+  height: auto;
+  max-height: 70%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  object-fit: contain;
+  filter: brightness(50%); /* 어둡게 처리 */
+  z-index: 1;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* 왼쪽 이미지 */
+.adjacent-image.left {
+  left: 5%; /* 왼쪽 위치 */
+}
+
+/* 오른쪽 이미지 */
+.adjacent-image.right {
+  right: 5%; /* 오른쪽 위치 */
+}
+
+/* 이미지 호버 시 확대 효과 */
+.adjacent-image:hover {
+  filter: brightness(70%);
+  transform: scale(1.05) translateY(-50%);
+}
+
+/* 스크롤 없는 상태 */
+body {
+  overflow: hidden;
 }
