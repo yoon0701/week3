@@ -98,14 +98,16 @@ body {
 
 /* 메인 컨텐츠에서 이미지가 없을 때 문구 표시 */
 .placeholder-text {
-  position: absolute; /* 화면 중앙 배치를 위해 위치를 절대값으로 설정 */
-  top: 50%; /* 화면 상단에서 50% 아래로 */
-  left: 50%; /* 화면 왼쪽에서 50% 오른쪽으로 */
-  transform: translate(-50%, -50%); /* 중앙 정렬을 위해 위치 보정 */
-  font-size: 18px;
-  color: #555;
+  position: fixed; /* 화면 전체 기준으로 중앙 배치 */
+  top: 50%; /* 화면의 50% 아래 */
+  left: 50%; /* 화면의 50% 오른쪽 */
+  transform: translate(-50%, -50%); /* 완벽한 중앙 정렬 */
+  font-size: 24px;
+  font-weight: bold; /* 강조를 위해 글씨 두께 조정 */
+  color: #555; /* 적절한 대비 색상 */
   text-align: center;
-  animation: fadeIn 0.5s ease; /* 부드러운 등장 효과 */
+  z-index: 10; /* 다른 요소 위에 표시 */
+  animation: fadeIn 0.5s ease;
 }
 
 /* 간단한 페이드 인 애니메이션 */

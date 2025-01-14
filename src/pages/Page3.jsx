@@ -7,14 +7,27 @@ const Page3 = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [osmd, setOsmd] = useState(null);
+  const [fileContent, setFileContent] = useState(null); // 파일 내용 저장
   const navigate = useNavigate();
 
   useEffect(() => {
-    const osmdInstance = new OpenSheetMusicDisplay("music-container", {
-      autoResize: true,
-    });
-    setOsmd(osmdInstance);
-  }, []);
+    if (fileContent) {
+      const osmdInstance = new OpenSheetMusicDisplay("music-container", {
+        autoResize: true,
+      });
+      setOsmd(osmdInstance);
+      osmdInstance
+        .load(fileContent)
+        .then(() => {
+          osmdInstance.render();
+          console.log("악보가 성공적으로 렌더링되었습니다.");
+        })
+        .catch((err) => {
+          console.error("악보 렌더링 중 오류 발생:", err);
+          alert("악보 렌더링에 실패했습니다. 유효한 MusicXML 파일인지 확인해주세요.");
+        });
+    }
+  }, [fileContent]); // fileContent 변경 시 실행
 
   const handleOpenPopup = () => {
     setIsPopupOpen(true);
@@ -30,36 +43,18 @@ const Page3 = () => {
   };
 
   const handleFileUpload = () => {
-  if (selectedFile) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const fileContent = e.target.result; // 바이너리 문자열로 파일 읽기
-      renderMusic(fileContent); // 악보 렌더링
-      alert(`파일 ${selectedFile.name}이 업로드되었습니다.`);
-      handleClosePopup();
-    };
-    reader.readAsBinaryString(selectedFile); // 바이너리 문자열로 읽기
-  } else {
-    alert("파일을 선택해주세요.");
-  }
-};
-
-const renderMusic = (fileContent) => {
-  if (osmd) {
-    osmd.load(fileContent)
-      .then(() => {
-        osmd.render(); // 악보 렌더링
-        console.log("악보가 성공적으로 렌더링되었습니다.");
-      })
-      .catch((err) => {
-        console.error("악보 렌더링 중 오류 발생:", err);
-        alert("악보 렌더링에 실패했습니다. 유효한 MusicXML 파일인지 확인해주세요.");
-      });
-  } else {
-    console.error("OSMD가 초기화되지 않았습니다.");
-  }
-};
-
+    if (selectedFile) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setFileContent(e.target.result); // 파일 내용 저장
+        alert(`파일 ${selectedFile.name}이 업로드되었습니다.`);
+        handleClosePopup();
+      };
+      reader.readAsBinaryString(selectedFile); // 바이너리 문자열로 읽기
+    } else {
+      alert("파일을 선택해주세요.");
+    }
+  };
 
   return (
     <div className="page3-container">
@@ -82,8 +77,12 @@ const renderMusic = (fileContent) => {
         <button className="popup-button" onClick={handleOpenPopup}>
           +
         </button>
-        {/* 악보 표시 영역 */}
-        <div id="music-container" className="music-container"></div>
+        {/* 조건부 렌더링 */}
+        {fileContent ? (
+          <div id="music-container" className="music-container"></div>
+        ) : (
+          <div className="upload-prompt">악보를 업로드하세요.</div>
+        )}
       </div>
 
       {/* 팝업 */}
