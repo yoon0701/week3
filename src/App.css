@@ -1,3 +1,4 @@
+/* 기본 스타일 */
 body {
   margin: 0;
   padding: 0;
@@ -6,63 +7,79 @@ body {
   justify-content: center;
   align-items: center;
   background: radial-gradient(circle, #ffd942 21.1%, #fff189 54%, #ede3b0 79.3%, #ffffff 99.3%);
-  font-family: 'Regular', sans-serif; /* 일반 폰트로 변경 */
+  font-family: 'Regular', sans-serif;
   overflow: hidden;
 }
 
+/* 배경 레이아웃 */
 .background {
   height: 100vh; /* 전체 화면 높이 */
   width: 100vw; /* 전체 화면 너비 */
   display: flex;
-  flex-direction: column; /* 수직 정렬 */
+  flex-direction: column; /* 세로 정렬 */
   justify-content: center; /* 수직 가운데 정렬 */
   align-items: center; /* 수평 가운데 정렬 */
-  margin-top: 100px; /* top-banner 높이만큼 여백 추가 */
+  gap: 20px; /* 요소 간의 간격 */
 }
 
-.login-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 18px;
-  font-family: 'Regular', serif;
+/* 제목 스타일 */
+.title {
+  font-size: 24px;
+  font-weight: bold;
   color: #333;
-  background-color: #ffe4b5;
+  margin-bottom: 20px;
+}
+
+/* 입력 필드 간 간격 조절 */
+.input-group {
+  display: flex;
+  flex-direction: column; /* 세로 정렬 */
+  gap: 15px; /* 입력 필드 간의 간격 */
+}
+
+/* 입력 필드 스타일 */
+.input-field {
+  width: 300px; /* 고정된 입력 필드 너비 */
+  padding: 10px; /* 내부 여백 */
+  font-size: 16px; /* 텍스트 크기 */
+  border: #272626a2; /* 테두리 제거 */
+  border-radius: 10px; /* 둥근 모서리 */
+  background-color: #ffffff; /* 흰색 배경 */
+  color: #000000; /* 검은색 텍스트 */
+  text-align: left; /* 텍스트 왼쪽 정렬 */
+  box-sizing: border-box; /* 테두리와 패딩 포함 */
+  margin-bottom: 10px; /* 기본 간격 제거 */
+}
+
+/* 입력 필드 포커스 효과 */
+.input-field:focus {
+  outline: none; /* 기본 포커스 테두리 제거 */
+  background-color: #fff9c0; /* 포커스 시 약간의 배경 변화 */
+}
+
+/* 버튼 그룹 레이아웃 */
+.button-group {
+  display: flex; /* 버튼들을 가로로 정렬 */
+  justify-content: center; /* 가운데 정렬 */
+  gap: 10px; /* 버튼 간격 */
+  margin-top: 20px; /* 버튼 그룹 위쪽 여백 */
+}
+
+/* 공통 버튼 스타일 */
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #333;
+  background-color: #acacacc8; /* 연한 회색 배경 */
   border: none;
-  border-radius: 20px;
+  border-radius: 20px; /* 둥근 모서리 */
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 효과 */
+  transition: all 0.3s ease; /* 부드러운 전환 효과 */
 }
 
-.login-button:hover {
-  background-color: #ffd700;
-  color: #000;
-  transform: translateY(-2px);
-}
-
-.dancing-image {
-  width: 150px;
-  height: auto;
-  margin: 20px 0;
-  animation: bounce 2s infinite; /* 애니메이션 추가 */
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0); /* 원래 위치 */
-  }
-  50% {
-    transform: translateY(-20px); /* 위로 이동 */
-  }
-}
-
-.top-banner {
-  position: fixed; /* 화면 상단 고정 */
-  top: 0;
-  left: 0;
-  width: 100vw; /* 화면의 전체 너비 */
-  height: 100px; /* 상단 바의 높이 */
-  background: url("/images/giphy.gif") repeat-x; /* GIF를 가로로 반복 */
-  background-size: auto 100%; /* 높이에 맞춰 GIF 크기 조정 */
-  z-index: 1000; /* 다른 요소 위에 표시 */
+/* 버튼 hover 효과 */
+.button:hover {
+  background-color: #fff189; /* 호버 시 노란색 배경 */
+  transform: translateY(-2px); /* 살짝 올라감 */
 }

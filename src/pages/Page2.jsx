@@ -16,23 +16,16 @@ const Page2 = () => {
   // 다음 이미지로 이동
   const handleNextImage = () => {
     if (lastViewedImages && currentIndex < lastViewedImages.length - 1) {
-      const currentImage = document.querySelector(".center-image");
-      currentImage.classList.add("image-hidden"); // 현재 이미지를 숨김
-      setTimeout(() => {
-        setCurrentIndex((prev) => prev + 1); // 다음 이미지로 이동
-      }, 500); // CSS 애니메이션 시간과 일치
+      setCurrentIndex(currentIndex + 1);
     }
   };
-  
+
+  // 이전 이미지로 이동
   const handlePrevImage = () => {
     if (lastViewedImages && currentIndex > 0) {
-      const currentImage = document.querySelector(".center-image");
-      currentImage.classList.add("image-hidden"); // 현재 이미지를 숨김
-      setTimeout(() => {
-        setCurrentIndex((prev) => prev - 1); // 이전 이미지로 이동
-      }, 500); // CSS 애니메이션 시간과 일치
+      setCurrentIndex(currentIndex - 1);
     }
-  };  
+  };
 
   return (
     <div className="page2-container">
