@@ -1,12 +1,22 @@
-/* 전체 레이아웃 */
-.page3-container {
-    position: relative;
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-  height: 100vh;
-  background: radial-gradient(circle, #ffe149 22%, #ede3b0 56.6%, #ffffff 83.9%);
-  overflow: hidden;
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Regular', sans-serif;
+    overflow: hidden;
+  }
+  
+  /* 전체 레이아웃 */
+  .page3-container {
+    display: flex;
+    flex-direction: row; /* 가로로 정렬 */
+    height: 100vh; /* 전체 화면 높이 */
+    width: 100vw; /* 전체 화면 너비 */
+    background: linear-gradient(to right, #fff189, #e6d783); /* Page1과 동일한 배경 */
+    overflow: hidden; /* 스크롤 방지 */
   }
   
   /* 좌측 사이드바 */

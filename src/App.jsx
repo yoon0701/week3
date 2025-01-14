@@ -14,11 +14,17 @@ const Home = () => {
   };
 
   return (
-    <div className="background">
-      <h1>콩나물 밭에 오신걸 환영합니다</h1>
-      <button className="login-button" onClick={handleLogin}>
-        Login
-      </button>
+    <div>
+      {/* 상단 고정된 GIF 배너 */}
+      <div className="top-banner"></div>
+      
+      {/* 로그인 콘텐츠 */}
+      <div className="background" style={{ marginTop: "100px" }}> {/* 상단 바 높이만큼 여백 추가 */}
+        <h1>콩나물 밭에 오신걸 환영합니다</h1>
+        <button className="login-button" onClick={handleLogin}>
+          Login
+        </button>
+      </div>
     </div>
   );
 };

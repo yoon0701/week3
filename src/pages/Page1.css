@@ -6,8 +6,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(circle, #ffe149 22%, #ede3b0 56.6%, #ffffff 83.9%);
-  font-family: 'Arial', sans-serif;
+  font-family: 'Regular', sans-serif;
   overflow: hidden;
 }
 
@@ -17,19 +16,19 @@ body {
   flex-direction: row; /* 가로로 정렬 */
   height: 100vh; /* 전체 화면 높이 */
   width: 100vw; /* 전체 화면 너비 */
-  background: radial-gradient(circle, #ffe149 22%, #ede3b0 56.6%, #ffffff 83.9%);
+  background: linear-gradient(to right, #fff189, #e6d783);
   overflow: hidden; /* 스크롤 방지 */
 }
 
 /* 좌측 사이드바 */
 .sidebar {
-  width: 25%;
+  width: 24%; /* 기존 25%에서 살짝 줄임 */
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* 상단으로 정렬 */
-  padding: 20px; /* 내부 여백 추가 */
-  background: linear-gradient(to right, #d8b93c, transparent);
+  padding: 30px 0 30px 30px; /* 좌측 padding 추가 (20px) */
+  box-sizing: border-box; /* 패딩이 전체 너비에 포함되도록 설정 */
 }
 
 /* 사이드바 텍스트 */
@@ -37,6 +36,7 @@ body {
   font-size: 24px;
   color: #000; /* 검은 글씨 */
   margin-bottom: 20px;
+  font-family: "Bold";
 }
 
 .sidebar ul {
@@ -178,22 +178,22 @@ body {
 /* 보기 버튼 */
 .view-button {
   left: 30%; /* 이미지의 왼쪽에 배치 */
-  background-color: rgba(0, 123, 255, 0.8); /* 파란색 */
+  background-color: rgba(135, 135, 135, 0.8); /* 파란색 */
 }
 
 .view-button:hover {
-  background-color: rgba(0, 123, 255, 1); /* 호버 시 진한 파란색 */
+  background-color: rgb(189, 217, 247); /* 호버 시 진한 파란색 */
   transform: scale(1.1); /* 확대 효과 */
 }
 
 /* 삭제 버튼 */
 .delete-button {
   right: 30%; /* 이미지의 오른쪽에 배치 */
-  background-color: rgba(255, 69, 0, 0.8); /* 빨간색 */
+  background-color: rgba(135, 135, 135, 0.8); /* 빨간색 */
 }
 
 .delete-button:hover {
-  background-color: rgba(255, 69, 0, 1); /* 호버 시 진한 빨간색 */
+  background-color: rgb(253, 208, 192); /* 호버 시 진한 빨간색 */
   transform: scale(1.1); /* 확대 효과 */
 }
 

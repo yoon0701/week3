@@ -31,14 +31,14 @@ const Page2 = () => {
     <div className="page2-container">
       {/* 좌측 사이드바 */}
       <div className="sidebar">
-        <h2>선택된 악보들</h2>
+        <h2>넘순이</h2>
         <ol>
           <li onClick={handleGoToPage1} style={{ cursor: "pointer" }}>
-            넘순이
+            악보 저장소
           </li>
-          <li style={{ cursor: "pointer" }}>넘김이</li>
+          <li style={{ cursor: "pointer" }}>넘순이</li>
           <li onClick={() => navigate("/page3")} style={{ cursor: "pointer" }}>
-            악복이
+            넘김이
           </li>
         </ol>
       </div>

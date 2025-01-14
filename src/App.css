@@ -1,4 +1,3 @@
-/* App.css */
 body {
   margin: 0;
   padding: 0;
@@ -6,14 +5,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(circle, #ffe149 22%, #ede3b0 56.6%, #ffffff 83.9%);
-  font-family: 'Regular', sans-serif;
+  background: radial-gradient(circle, #ffd942 21.1%, #fff189 54%, #ede3b0 79.3%, #ffffff 99.3%);
+  font-family: 'Regular', sans-serif; /* 일반 폰트로 변경 */
   overflow: hidden;
 }
 
 .background {
-  text-align: center;
-  font-family: 'Bold';
+  height: 100vh; /* 전체 화면 높이 */
+  width: 100vw; /* 전체 화면 너비 */
+  display: flex;
+  flex-direction: column; /* 수직 정렬 */
+  justify-content: center; /* 수직 가운데 정렬 */
+  align-items: center; /* 수평 가운데 정렬 */
+  margin-top: 100px; /* top-banner 높이만큼 여백 추가 */
 }
 
 .login-button {
@@ -34,4 +38,31 @@ body {
   background-color: #ffd700;
   color: #000;
   transform: translateY(-2px);
+}
+
+.dancing-image {
+  width: 150px;
+  height: auto;
+  margin: 20px 0;
+  animation: bounce 2s infinite; /* 애니메이션 추가 */
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0); /* 원래 위치 */
+  }
+  50% {
+    transform: translateY(-20px); /* 위로 이동 */
+  }
+}
+
+.top-banner {
+  position: fixed; /* 화면 상단 고정 */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 화면의 전체 너비 */
+  height: 100px; /* 상단 바의 높이 */
+  background: url("/images/giphy.gif") repeat-x; /* GIF를 가로로 반복 */
+  background-size: auto 100%; /* 높이에 맞춰 GIF 크기 조정 */
+  z-index: 1000; /* 다른 요소 위에 표시 */
 }

@@ -46,16 +46,16 @@ const Page1 = () => {
     <div className="page1-container">
       {/* 좌측 사이드바 */}
       <div className="sidebar">
-        <h2>Welcome Yoon</h2>
+        <h2>악보 저장소</h2>
         <ol>
           <li onClick={() => navigate("/page1")} style={{ cursor: "pointer" }}>
-            넘순이
+            악보 저장소
           </li>
           <li onClick={() => navigate("/page2")} style={{ cursor: "pointer" }}>
-            넘김이
+            넘순이
           </li>
           <li onClick={() => navigate("/page3")} style={{ cursor: "pointer" }}>
-            악복이
+            넘김이
           </li>
         </ol>
       </div>
