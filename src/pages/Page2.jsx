@@ -2,16 +2,14 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import "./Page2.css";
+import icon from "../assets/icons/icon.png";
+
 
 const Page2 = () => {
   const { lastViewedImages } = useContext(AppContext); // Context에서 데이터 가져오기
   const [currentIndex, setCurrentIndex] = useState(0); // 현재 이미지 인덱스 관리
+  const [sidebarActive, setSidebarActive] = useState(false); // 사이드바 상태 관리
   const navigate = useNavigate();
-
-  // "1. 넘순이" 클릭 시 Page1으로 이동
-  const handleGoToPage1 = () => {
-    navigate("/page1"); // Page1으로 이동
-  };
 
   // 다음 이미지로 이동
   const handleNextImage = () => {
@@ -27,21 +25,51 @@ const Page2 = () => {
     }
   };
 
+   // 사이드바 활성화
+   const showSidebar = () => {
+    setSidebarActive(true);
+  };
+
+  // 사이드바 비활성화
+  const hideSidebar = () => {
+    setSidebarActive(false);
+  };
+
   return (
     <div className="page2-container">
-      {/* 좌측 사이드바 */}
-      <div className="sidebar">
-        <h2>넘순이</h2>
-        <ol>
-          <li onClick={handleGoToPage1} style={{ cursor: "pointer" }}>
-            악보 저장소
-          </li>
-          <li style={{ cursor: "pointer" }}>넘순이</li>
-          <li onClick={() => navigate("/page3")} style={{ cursor: "pointer" }}>
-            넘김이
-          </li>
-        </ol>
+  {/* 트리거 및 사이드바를 하나의 영역으로 포함 */}
+  <div
+    className="sidebar-wrapper"
+    onMouseEnter={showSidebar} // 마우스가 트리거 또는 사이드바 영역에 들어가면 활성화
+    onMouseLeave={hideSidebar} // 마우스가 전체 영역을 떠나면 비활성화
+  >
+    {/* 트리거 영역 */}
+    <div className="sidebar-trigger"></div>
+
+    {/* 사이드바 */}
+    <div className={`sidebar ${sidebarActive ? "active" : ""}`}>
+      <img src={icon} alt="Icon" className="sidebar-icon" />
+
+      <div className="large-key" onClick={() => navigate("/page1")}>
+        악보 저장소
       </div>
+      <div className="large-key" onClick={() => navigate("/page2")}>
+        넘순이
+        <div className="small-key"></div>
+      </div>
+      <div className="large-key" onClick={() => navigate("/page3")}>
+        넘김이
+        <div className="small-key"></div>
+      </div>
+      <div className="large-key"></div>
+      <div className="large-key">
+        <div className="small-key"></div>
+      </div>
+      <div className="large-key">
+        <div className="small-key"></div>
+      </div>
+    </div>
+  </div>
 
       {/* 이미지 표시 영역 */}
       <div className="image-display">

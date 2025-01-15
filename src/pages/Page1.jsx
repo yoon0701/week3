@@ -3,10 +3,12 @@ import Popup from "../components/Popup";
 import { AppContext } from "../context/AppContext";
 import "./Page1.css";
 import { useNavigate } from "react-router-dom";
+import icon from "../assets/icons/icon.png";
 
 const Page1 = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false); // Popup 상태
   const { allImages, setAllImages, imageGroups, setImageGroups, setLastViewedImages } = useContext(AppContext); // Context 사용
+  const [sidebarActive, setSidebarActive] = useState(false); // 사이드바 상태 관리
   const navigate = useNavigate();
 
   // 팝업 열기
@@ -42,22 +44,51 @@ const Page1 = () => {
     navigate("/page2", { state: { images: imageGroups[index] } }); // 해당 그룹의 이미지만 Page2로 전달
   };
 
+  
+   // 사이드바 활성화
+   const showSidebar = () => {
+    setSidebarActive(true);
+  };
+
+  // 사이드바 비활성화
+  const hideSidebar = () => {
+    setSidebarActive(false);
+  };
+
   return (
-    <div className="page1-container">
-      {/* 좌측 사이드바 */}
-      <div className="sidebar">
-        <h2>악보 저장소</h2>
-        <ol>
-          <li onClick={() => navigate("/page1")} style={{ cursor: "pointer" }}>
+      <div className="page1-container">
+      {/* 트리거 및 사이드바를 하나의 영역으로 포함 */}
+      <div
+        className="sidebar-wrapper"
+        onMouseEnter={showSidebar} // 마우스가 트리거 또는 사이드바 영역에 들어가면 활성화
+        onMouseLeave={hideSidebar} // 마우스가 전체 영역을 떠나면 비활성화
+      >
+        {/* 트리거 영역 */}
+        <div className="sidebar-trigger"></div>
+    
+        {/* 사이드바 */}
+        <div className={`sidebar ${sidebarActive ? "active" : ""}`}>
+          <img src={icon} alt="Icon" className="sidebar-icon" />
+    
+          <div className="large-key" onClick={() => navigate("/page1")}>
             악보 저장소
-          </li>
-          <li onClick={() => navigate("/page2")} style={{ cursor: "pointer" }}>
+          </div>
+          <div className="large-key" onClick={() => navigate("/page2")}>
             넘순이
-          </li>
-          <li onClick={() => navigate("/page3")} style={{ cursor: "pointer" }}>
+            <div className="small-key"></div>
+          </div>
+          <div className="large-key" onClick={() => navigate("/page3")}>
             넘김이
-          </li>
-        </ol>
+            <div className="small-key"></div>
+          </div>
+          <div className="large-key"></div>
+          <div className="large-key">
+            <div className="small-key"></div>
+          </div>
+          <div className="large-key">
+            <div className="small-key"></div>
+          </div>
+        </div>
       </div>
 
       {/* 메인 컨텐츠 */}

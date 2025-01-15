@@ -20,34 +20,86 @@ body {
   overflow: hidden; /* 스크롤 방지 */
 }
 
-/* 좌측 사이드바 */
+/* 사이드바 */
 .sidebar {
-  width: 24%; /* 기존 25%에서 살짝 줄임 */
+  width: 24%; /* 사이드바 너비 */
   height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0; /* 화면 왼쪽에서 시작 */
+  background-color: transparent;
+  overflow: visible; /* 자식 요소가 넘칠 경우에도 보이도록 설정 */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* 부드러운 애니메이션 */
+  z-index: 1000; /* 다른 요소 위에 표시 */
+  transform: translateX(-100%); /* 기본적으로 숨김 */
+  opacity: 0; /* 기본적으로 투명 */
+}
+
+/* 사이드바가 활성화될 때 화면 안으로 이동 */
+.sidebar.active {
+  transform: translateX(-10%); /* 활성화 시 화면 안으로 이동 */
+  opacity: 1; /* 활성화 시 보이도록 설정 */
+}
+
+/* 화면 왼쪽의 트리거 영역 */
+.sidebar-trigger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px; /* 작은 트리거 영역 */
+  height: 100%;
+  z-index: 999; /* 사이드바 위에 위치 */
+  background-color: transparent; /* 눈에 보이지 않도록 설정 */
+  cursor: pointer; /* 클릭 가능한 영역임을 표시 */
+}
+
+/* 사이드바 아이콘 */
+.sidebar-icon {
+  width: 80px; /* 아이콘 너비 */
+  height: auto; /* 비율 유지 */
+  margin-bottom: 0px; /* 아래 여백 추가 */
+  margin-left: 40px; /* 좌측 여백 */
+}
+
+/* 큰 건반 스타일 */
+.large-key {
+  width: 200px;
+  height: 50px;
+  margin: 0; /* 가운데 정렬 및 간격 설정 */
+  background-color: #f4e3b2;
+  border: 2px solid #a3855b;
+  border-radius: 5px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* 상단으로 정렬 */
-  padding: 30px 0 30px 30px; /* 좌측 padding 추가 (20px) */
-  box-sizing: border-box; /* 패딩이 전체 너비에 포함되도록 설정 */
-}
-
-/* 사이드바 텍스트 */
-.sidebar h1 {
-  font-size: 24px;
-  color: #000; /* 검은 글씨 */
-  margin-bottom: 20px;
-  font-family: "Bold";
-}
-
-.sidebar ul {
-  list-style: none; /* 기본 목록 스타일 제거 */
-  padding: 0;
-}
-
-.sidebar ul li {
+  justify-content: flex-end; /* 텍스트를 왼쪽에서 시작 */
+  padding-right: 15px;
+  align-items: center;
   font-size: 18px;
-  margin-bottom: 10px;
-  color: #000; /* 검은 글씨 */
+  font-weight: bold;
+  color: #5a4635;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  position: relative; /* 작은 건반 위치 기준 */
+  z-index: 1; /* 큰 건반의 기본 z-index */
+}
+
+.large-key:hover {
+  transform: scale(1.05); /* 호버 시 확대 효과 */
+  background-color: #edd5a3;
+}
+
+/* 작은 건반 스타일 */
+.small-key {
+  width: 36%;
+  height: 20px;
+  background-color: #8b6e4c; /* 검은 건반 색상 */
+  border-radius: 3px;
+  position: absolute; /* 큰 건반 위에 겹치도록 설정 */
+  top: -12px; /* 큰 건반의 상단에 위치 */
+  right: 65%; /* 큰 건반 오른쪽에 배치 */
+  z-index: 2; /* 항상 큰 건반 위에 표시 */
+  opacity: 1; /* 기본적으로 표시 */
+  visibility: visible; /* 항상 보이도록 설정 */
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 /* 메인 컨텐츠 */
