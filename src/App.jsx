@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import AppProvider from "./context/AppContext";
+import Page1 from "./pages/Page1";
+import Page2 from "./pages/Page2";
+import Page3 from "./pages/Page3";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const Home = () => {
+  const navigate = useNavigate(); // 페이지 이동을 위한 훅 사용
+
+  const handleLogin = () => {
+    navigate("/page1"); // Login 버튼 클릭 시 Page1으로 이동
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="background">
+      <h1>콩나물 밭에 오신걸 환영합니다</h1>
+      <button className="login-button" onClick={handleLogin}>
+        Login
+      </button>
+    </div>
+  );
+};
 
-export default App
+const App = () => {
+  return (
+    <AppProvider> {/* Context API로 감싸기 */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} /> {/* 로그인 페이지 */}
+          <Route path="/page1" element={<Page1 />} /> {/* Page1 */}
+          <Route path="/page2" element={<Page2 />} /> {/* Page2 */}
+          <Route path="/page3" element={<Page3 />} /> {/* Page3 */}
+        </Routes>
+      </Router>
+    </AppProvider>
+  );
+};
+
+export default App;

@@ -1,0 +1,115 @@
+/* 전체 레이아웃 */
+.page2-container {
+  position: relative; /* 전체 화면을 기준으로 메시지 배치를 위해 relative 설정 */
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, #ffe149 22%, #ede3b0 56.6%, #ffffff 83.9%);
+  overflow: hidden;
+}
+
+/* 좌측 사이드바 */
+.sidebar {
+  width: 25%;
+  height: 100%;
+  background: linear-gradient(to right, #d8b93c, transparent);
+  padding: 20px;
+}
+
+.sidebar h2 {
+  font-size: 24px;
+  color: #000;
+}
+
+.sidebar ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  font-size: 18px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+/* 이미지 표시 영역 */
+.image-display {
+  width: 75%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 이미지 없을 때 메시지 */
+.no-image-message {
+  position: fixed; /* 화면 전체 기준으로 중앙 배치 */
+  top: 50%; /* 화면의 50% 아래 */
+  left: 50%; /* 화면의 50% 오른쪽 */
+  transform: translate(-50%, -50%); /* 완벽한 중앙 정렬 */
+  font-size: 24px;
+  font-weight: bold; /* 강조를 위해 글씨 두께 조정 */
+  color: #555; /* 적절한 대비 색상 */
+  text-align: center;
+  z-index: 10; /* 다른 요소 위에 표시 */
+}
+
+/* 이미지 래퍼 */
+.image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 현재 이미지 */
+.center-image {
+  width: 70%; /* 고정된 이미지 규격 */
+  height: auto;
+  max-height: 80%; /* 화면 높이 제한 */
+  object-fit: contain;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+/* 이전 및 다음 이미지 */
+.adjacent-image {
+  width: 50%;
+  height: auto;
+  max-height: 70%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  object-fit: contain;
+  filter: brightness(50%); /* 어둡게 처리 */
+  z-index: 1;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* 왼쪽 이미지 */
+.adjacent-image.left {
+  left: 5%; /* 왼쪽 위치 */
+}
+
+/* 오른쪽 이미지 */
+.adjacent-image.right {
+  right: 5%; /* 오른쪽 위치 */
+}
+
+/* 이미지 호버 시 확대 효과 */
+.adjacent-image:hover {
+  filter: brightness(70%);
+  transform: scale(1.05) translateY(-50%);
+}
+
+/* 스크롤 방지 */
+body {
+  overflow: hidden;
+}

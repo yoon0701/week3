@@ -1,0 +1,201 @@
+/* 기본 스타일 */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, #ffe149 22%, #ede3b0 56.6%, #ffffff 83.9%);
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+/* 전체 레이아웃 */
+.page1-container {
+  display: flex;
+  flex-direction: row; /* 가로로 정렬 */
+  height: 100vh; /* 전체 화면 높이 */
+  width: 100vw; /* 전체 화면 너비 */
+  background: radial-gradient(circle, #ffe149 22%, #ede3b0 56.6%, #ffffff 83.9%);
+  overflow: hidden; /* 스크롤 방지 */
+}
+
+/* 좌측 사이드바 */
+.sidebar {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 상단으로 정렬 */
+  padding: 20px; /* 내부 여백 추가 */
+  background: linear-gradient(to right, #d8b93c, transparent);
+}
+
+/* 사이드바 텍스트 */
+.sidebar h1 {
+  font-size: 24px;
+  color: #000; /* 검은 글씨 */
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none; /* 기본 목록 스타일 제거 */
+  padding: 0;
+}
+
+.sidebar ul li {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #000; /* 검은 글씨 */
+}
+
+/* 메인 컨텐츠 */
+.main-content {
+  width: 75%;
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  flex-wrap: wrap; /* 이미지가 넘칠 경우 줄바꿈 */
+  gap: 20px; /* 이미지 간격 */
+}
+
+.main-content img {
+  width: 200px; /* 이미지 너비 */
+  height: auto; /* 비율 유지 */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 우측 하단 버튼 */
+.add-button {
+  position: fixed; /* 고정 위치 */
+  bottom: 20px; /* 하단에서 20px 위 */
+  right: 20px; /* 오른쪽에서 20px 왼쪽 */
+  width: 60px;
+  height: 60px;
+  background-color: #ffd700; /* 노란색 버튼 */
+  color: white;
+  font-size: 24px; /* + 기호 크기 */
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px; /* 버튼 높이와 동일하게 설정 */
+  border: none;
+  border-radius: 50%; /* 완전한 원형 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 버튼 그림자 */
+  cursor: pointer;
+  transition: transform 0.2s ease; /* 호버 효과 부드럽게 */
+}
+
+.add-button:hover {
+  background-color: #ffc107; /* 호버 시 색상 변경 */
+}
+
+.add-button span {
+  font-size: 24px; /* + 기호 크기 */
+  color: #000000; /* 글자 색상 */
+}
+
+/* 메인 컨텐츠에서 이미지가 없을 때 문구 표시 */
+.placeholder-text {
+  position: absolute; /* 화면 중앙 배치를 위해 위치를 절대값으로 설정 */
+  top: 50%; /* 화면 상단에서 50% 아래로 */
+  left: 50%; /* 화면 왼쪽에서 50% 오른쪽으로 */
+  transform: translate(-50%, -50%); /* 중앙 정렬을 위해 위치 보정 */
+  font-size: 18px;
+  color: #555;
+  text-align: center;
+  animation: fadeIn 0.5s ease; /* 부드러운 등장 효과 */
+}
+
+/* 간단한 페이드 인 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 이미지 리스트 */
+.sheet-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4열로 설정 */
+  gap: 20px; /* 각 악보 간의 간격 */
+  padding: 20px;
+  justify-items: center; /* 각 열의 악보를 중앙 정렬 */
+}
+
+/* 업로드된 이미지 컨테이너 */
+.sheet-item {
+  width: 200px; /* 악보 이미지의 고정된 너비 */
+  position: relative; /* 삭제 버튼 위치를 이미지 위로 설정하기 위한 기준 */
+  display: inline-block;
+}
+
+/* 업로드된 악보 이미지 스타일 */
+.sheet-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  transition: transform 0.2s ease; /* 호버 시 확대 효과 */
+}
+
+.sheet-image:hover {
+  transform: scale(1.05); /* 이미지 확대 */
+}
+
+/* 버튼 컨테이너 */
+.button-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none; /* 기본적으로 숨기기 */
+  gap: 10px;
+  z-index: 2;
+}
+
+/* 공통 버튼 스타일 */
+.sheet-button {
+  position: absolute;
+  top: 50%; /* 이미지의 수직 중앙 */
+  transform: translateY(-50%); /* Y축 중앙 정렬 */
+  padding: 8px 16px;
+  font-size: 14px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  z-index: 2;
+}
+
+/* 보기 버튼 */
+.view-button {
+  left: 30%; /* 이미지의 왼쪽에 배치 */
+  background-color: rgba(0, 123, 255, 0.8); /* 파란색 */
+}
+
+.view-button:hover {
+  background-color: rgba(0, 123, 255, 1); /* 호버 시 진한 파란색 */
+  transform: scale(1.1); /* 확대 효과 */
+}
+
+/* 삭제 버튼 */
+.delete-button {
+  right: 30%; /* 이미지의 오른쪽에 배치 */
+  background-color: rgba(255, 69, 0, 0.8); /* 빨간색 */
+}
+
+.delete-button:hover {
+  background-color: rgba(255, 69, 0, 1); /* 호버 시 진한 빨간색 */
+  transform: scale(1.1); /* 확대 효과 */
+}
+
+/* 마우스 올릴 때 버튼 컨테이너 표시 */
+.sheet-item:hover .button-container {
+  display: flex; /* 버튼 보이기 */
+}

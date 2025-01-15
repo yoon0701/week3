@@ -1,0 +1,183 @@
+/* 전체 레이아웃 */
+.page3-container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, #ffe149 22%, #ede3b0 56.6%, #ffffff 83.9%);
+    overflow: hidden;
+  }
+  
+  /* 좌측 사이드바 */
+  .sidebar {
+    width: 25%;
+    height: 100%;
+    background: linear-gradient(to right, #d8b93c, transparent);
+    padding: 20px;
+  }
+  
+  .sidebar h2 {
+    font-size: 24px;
+    color: #000;
+  }
+  
+  .sidebar ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    font-size: 18px;
+    margin: 10px 0;
+    cursor: pointer;
+  }
+  
+  /* 메인 영역 */
+  .main-content {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* 악보 렌더링 영역 */
+  .music-container {
+    width: 70%;
+  height: 80%;
+  overflow: auto; /* 스크롤 활성화 */
+  background-color: white; /* 배경색 추가 */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  }
+  
+  /* 팝업 버튼 */
+  .popup-button {
+    position: fixed; /* 고정 위치 */
+  bottom: 20px; /* 하단에서 20px 위 */
+  right: 20px; /* 오른쪽에서 20px 왼쪽 */
+  width: 60px;
+  height: 60px;
+  background-color: #ffd700; /* 노란색 버튼 */
+  color: white;
+  font-size: 24px; /* + 기호 크기 */
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px; /* 버튼 높이와 동일하게 설정 */
+  border: none;
+  border-radius: 50%; /* 완전한 원형 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 버튼 그림자 */
+  cursor: pointer;
+  transition: transform 0.2s ease; /* 호버 효과 부드럽게 */
+  }
+  
+  .popup-button:hover {
+    background-color: #ffcc00;
+  }
+  
+  /* 팝업 오버레이 */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* 팝업 콘텐츠 */
+  .popup-content {
+    width: 400px;
+    background-color: #ffea75;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* 팝업 닫기 버튼 */
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: #555555;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .popup-close:hover {
+    background: #555555;
+  }
+  
+  /* 파일 선택 입력 */
+  .file-input {
+    margin: 20px 0;
+    padding: 10px;
+    width: 80%;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #fff;
+    outline: none;
+  }
+  
+  .file-input:hover {
+    border-color: #999;
+  }
+  
+  /* 팝업 버튼 컨테이너 */
+  .popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  /* 업로드 버튼 */
+  .upload-button {
+    background-color: #868585;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .upload-button:hover {
+    background-color: #555555;
+  }
+  
+  /* 닫기 버튼 */
+  .close-button {
+    background-color: #868585;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .close-button:hover {
+    background-color: #e53935;
+  }
+  
